@@ -23,5 +23,28 @@ DrybathTempIncreases<-read.csv("DrybathTrial_Connors_drybathtime_temp_forR.csv")
 str(DrybathTempIncreases) #check to make sure R is reading in variables correctly
 
 #Need to get R to read time correctly
+DrybathTempIncreases$TimeTempIncreased_formatedasTime<-NA
+DrybathTempIncreases$TimeTempIncreased_formatedasTime<-strptime(DrybathTempIncreases$TimeTempIncreased, 
+                                                                format = "%H:%M")
+
+DrybathTempIncreases$TimeTempReached_formatedasTime<-NA
+DrybathTempIncreases$TimeTempReached_formatedasTime<-strptime(DrybathTempIncreases$TimeTempReached, 
+                                                                format = "%H:%M")
+plot(DrybathTempIncreases$TimeTempIncreased_formatedasTime, DrybathTempIncreases$TimeTempReached_formatedasTime)
+#Currently plots data point after 1PM as a 1AM time point because time needs to be entered as military time. 
+
+
+#CTmax histogram
+hist(CTmaxtemp$CTmaxTemp_C)
+
+#Temperature versus time
+#Temp of dry bath
+plot(DrybathTempIncreases$TimeTempIncreased_formatedasTime, DrybathTempIncreases$ThermometerTemp_C)
+plot(DrybathTempIncreases$TimeTempReached_formatedasTime, DrybathTempIncreases$ThermometerTemp_C)
+#Temp as measured by the thermometer. 
+
+
+
+
 
 
