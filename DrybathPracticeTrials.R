@@ -44,7 +44,11 @@ plot(DrybathTempIncreases$TimeTempReached_formatedasTime, DrybathTempIncreases$T
 #Temp as measured by the thermometer. 
 
 
+plot(DrybathTempIncreases$DryBathTemp_C, DrybathTempIncreases$ThermometerTemp_C)
 
+RealTempvsDrybathTemp_lm<-lm(data = DrybathTempIncreases,
+                             DryBathTemp_C ~ ThermometerTemp_C)
+plot(RealTempvsDrybathTemp_lm)
+hist(residuals(RealTempvsDrybathTemp_lm))
 
-
-
+summary(RealTempvsDrybathTemp_lm)
